@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BookIt</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+        <header class="topbar">
+        <div>
+          <h1>BookIt</h1>
+          <p>Shared Resource Booking</p>
+        </div>
+        <button class="primary-btn" id="new-booking-btn">+ New Booking</button>
+      </header>
+
+      <main class="container">
+        <section class="hero">
+          <h2>Manage your shared resources</h2>
+          <p>Book meeting rooms and equipment without double-booking.</p>
+        </section>
+
+        <section class="dashboard-overview" aria-label="Booking dashboard">
+          <div class="dashboard-heading">
+            <div>
+              <span>Workspace dashboard</span>
+              <h3>Today at a glance</h3>
+            </div>
+            <span id="dashboard-date" class="dashboard-date"></span>
+          </div>
+          <div class="dashboard-metrics">
+            <article class="dashboard-metric">
+              <span class="dashboard-metric-icon">◫</span>
+              <div><small>Resources</small><strong id="dashboard-resource-count">0</strong></div>
+            </article>
+            <article class="dashboard-metric">
+              <span class="dashboard-metric-icon blue">◷</span>
+              <div><small>Today’s bookings</small><strong id="dashboard-booking-count">0</strong></div>
+            </article>
+            <article class="dashboard-metric">
+              <span class="dashboard-metric-icon green">✓</span>
+              <div><small>Confirmed</small><strong id="dashboard-confirmed-count">0</strong></div>
+            </article>
+            <article class="dashboard-metric">
+              <span class="dashboard-metric-icon orange">⌁</span>
+              <div><small>Resources free</small><strong id="dashboard-available-count">0</strong></div>
+            </article>
+          </div>
+        </section>
+
+        <div id="message-box"></div>
+
+        <section class="form-panel hidden" id="booking-form-panel">
+          <div class="form-header">
+            <div>
+              <h3>Create New Booking</h3>
+              <p>Enter the booking details below.</p>
+            </div>
+            <button class="close-btn" id="close-form-btn">✕</button>
+          </div>
+
+          <form id="booking-form">
+            <div class="form-grid">
+              <div class="field">
+                <label>Resource</label>
+                <select id="resourceId" name="resourceId" required>
+                  <option value="">Select a resource</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label>Date</label>
+                <input type="date" id="date" name="date" required />
+              </div>
+
+              <div class="field">
+                <label>Start Time</label>
+                <input type="time" id="startTime" name="startTime" required />
+              </div>
+
+              <div class="field">
+                <label>End Time</label>
+                <input type="time" id="endTime" name="endTime" required />
+              </div>
+
+              <div class="field">
+                <label>Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required />
+              </div>
+
+              <div class="field">
+                <label>Purpose</label>
+                <input type="text" id="purpose" name="purpose" placeholder="Meeting, presentation..." required />
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="cancel-btn" id="cancel-form-btn">Cancel</button>
+              <button type="submit" class="primary-btn">Create Booking</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h3>Available Resources</h3>
+            <p>Select a resource to view its bookings.</p>
+          </div>
+          <div id="resource-list" class="resource-grid"></div>
+        </section>
+
+        <section class="section">
+          <div class="section-header booking-header">
+            <div>
+              <h3>Bookings</h3>
+              <p>Check scheduled bookings for the selected date.</p>
+            </div>
+            <input type="date" id="booking-date" class="date-input" />
+          </div>
+
+          <div id="bookings-list" class="bookings-panel"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

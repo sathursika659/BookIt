@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1789543313730,
+    "resourceId": 1,
+    "date": "2026-09-20",
+    "startTime": "09:00",
+    "endTime": "10:00",
+    "name": "Sathursika",
+    "purpose": "Team Meeting",
+    "status": "cancelled"
+  },
+  {
+    "id": 1789550308684,
+    "resourceId": 1,
+    "date": "2026-09-20",
+    "startTime": "09:00",
+    "endTime": "10:00",
+    "name": "sathursika",
+    "purpose": "team meeting",
+    "status": "cancelled"
+  },
+  {
+    "id": 1789550982756,
+    "resourceId": 1,
+    "date": "2026-09-20",
+    "startTime": "10:00",
+    "endTime": "11:00",
+    "name": "Test user",
+    "purpose": "Boundary Test",
+    "status": "confirmed"
+  },
+  {
+    "id": 1789618796747,
+    "resourceId": 1,
+    "date": "2026-09-20",
+    "startTime": "09:00",
+    "endTime": "10:00",
+    "name": "sathursika",
+    "purpose": "team meeting",
+    "status": "cancelled"
+  },
+  {
+    "id": 1789619074252,
+    "resourceId": 1,
+    "date": "2026-09-20",
+    "startTime": "09:00",
+    "endTime": "10:00",
+    "name": "sathursika",
+    "purpose": "team meeting",
+    "status": "confirmed"
+  },
+  {
+    "id": 1789619563429,
+    "resourceId": 1,
+    "date": "2026-09-21",
+    "startTime": "10:00",
+    "endTime": "11:00",
+    "name": "shana",
+    "purpose": "presentation",
+    "status": "confirmed"
+  }
+]

@@ -68,5 +68,35 @@
     "name": "jachchu",
     "purpose": "presentation",
     "status": "confirmed"
+  },
+  {
+    "id": 1789641463601,
+    "resourceId": 1,
+    "date": "2026-09-17",
+    "startTime": "09:00",
+    "endTime": "10:00",
+    "name": "jachchu",
+    "purpose": "presentation",
+    "status": "confirmed"
+  },
+  {
+    "id": 1789641544065,
+    "resourceId": 1,
+    "date": "2026-09-20",
+    "startTime": "10:00",
+    "endTime": "11:00",
+    "name": "shana",
+    "purpose": "meeting",
+    "status": "confirmed"
+  },
+  {
+    "id": 1789641638162,
+    "resourceId": 1,
+    "date": "2026-09-17",
+    "startTime": "10:30",
+    "endTime": "11:30",
+    "name": "kaja",
+    "purpose": "team meeting",
+    "status": "confirmed"
   }
 ]

@@ -49,3 +49,13 @@ it in the walkthrough, not just trust what AI gave me.
 
 AI saved time on boilerplate and explanations, but I made the real
 decisions and checked the app's behaviour myself before calling it done.
+
+## Commit history note
+
+One commit ("Build BookIt resource booking app") has a big chunk of the
+Copilot-drafted code all in one step. That happened because I got it as
+a working draft and committed it as one big piece instead of building it
+up bit by bit myself. Looking back, I should have split that commit into
+smaller ones (server routes, frontend, docs) even though it came from AI,
+so the history would show the same step-by-step process as my other
+commits.

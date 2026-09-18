@@ -118,5 +118,25 @@
     "name": "Bob",
     "purpose": "Testing adjacent slot",
     "status": "cancelled"
+  },
+  {
+    "id": 1789723722852,
+    "resourceId": 2,
+    "date": "2026-09-20",
+    "startTime": "10:00",
+    "endTime": "11:00",
+    "name": "kaja",
+    "purpose": "team meeting",
+    "status": "cancelled"
+  },
+  {
+    "id": 1789723750998,
+    "resourceId": 2,
+    "date": "2026-09-20",
+    "startTime": "11:00",
+    "endTime": "12:00",
+    "name": "sathu",
+    "purpose": "presentation",
+    "status": "confirmed"
   }
 ]

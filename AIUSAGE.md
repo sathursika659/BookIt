@@ -1,30 +1,51 @@
 # AI-USAGE
 
-I used GitHub Copilot to help speed up the setup and debugging process. I used it mainly for code structure, API route design, and writing the README and decision notes.
+I used two AI tools at different points: Claude (to explain code and help
+me fix things step by step) and GitHub Copilot (which gave me an early
+draft of a plain HTML + Express version of the app).
+
+## What actually happened
+
+I first built the app with React + Vite — backend, overlap logic, cancel
+feature — with Claude, one step at a time, committing to Git along the
+way. Then I switched to a simpler plain HTML/CSS/JS + Express version that
+Copilot had drafted. I used Claude to read through that code, understand
+it, and fix parts that didn't match my decisions or didn't work.
 
 ## Prompts I actually used
 
-1. "Build a simple booking app with Express backend and static frontend, with resource booking and time conflict checks."
-2. "Help me fix the ES module/CommonJS issue and make the server serve the public folder correctly."
-3. "Write a clean README and decision log for this project in plain English."
+1. "Explain what this server.js file does, part by part."
+2. "Why does this test fail sometimes but not other times?"
+3. "Help me write DECISIONS.md and README.md based on what I actually did."
 
 ## What AI helped with
 
-AI was useful for:
+- explaining unfamiliar code (ES modules, `__dirname`)
+- figuring out why a test kept failing
+- drafting README, DECISIONS.md, REVIEW.md, which I then corrected to match
+  what I really built
 
-- generating a working Express server skeleton
-- suggesting the structure for the frontend and backend split
-- helping shape the validation and overlap logic
-- drafting documentation and project notes
+## One thing I rejected / fixed
 
-## One thing I rejected
+My first AI-USAGE draft said I "rejected React + Vite." That wasn't true —
+I actually built a working React version first, then switched later. I
+rewrote this file to say what really happened.
 
-One AI suggestion was to keep a React + Vite setup for the project. That was not the best fit for the actual requirement because the brief allowed a simple app and the project was faster and more reliable as a static HTML frontend with a Node API. I rejected that path because it added unnecessary setup and complexity for a small local booking app.
+## Another thing I caught
+
+My adjacent-booking test failed the first time I ran it, even though the
+logic looked right. At first I thought the logic was wrong. Turned out the
+test was reusing old data from `bookings.json`, not the logic. I fixed the
+test to reset that file before running, instead of changing logic that was
+already correct.
 
 ## Why I still checked manually
 
-AI helped with speed, but I did not blindly trust it. I checked the server logic, route behavior, overlap handling, and final docs manually. This was important because the booking rule is the core of the app and must be correct.
+I tested touching bookings, real overlaps, past dates, and cancelling in
+the browser myself. I also read server.js line by line so I could explain
+it in the walkthrough, not just trust what AI gave me.
 
 ## Final note
 
-AI was helpful as a coding assistant, but the final responsibility stayed with me. I used it to accelerate the work, then validated and corrected the result before finishing.
+AI saved time on boilerplate and explanations, but I made the real
+decisions and checked the app's behaviour myself before calling it done.

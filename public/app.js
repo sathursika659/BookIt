@@ -10,7 +10,8 @@ const state = {
   resources: [],
   bookings: [],
   selectedDate: '',
-  formOpen: false
+  formOpen: false,
+  currentView: 'dashboard'
 };
 
 const resourceList = document.getElementById('resource-list');
@@ -24,7 +25,9 @@ const dashboardDate = document.getElementById('dashboard-date');
 const dashboardResourceCount = document.getElementById('dashboard-resource-count');
 const dashboardBookingCount = document.getElementById('dashboard-booking-count');
 const dashboardConfirmedCount = document.getElementById('dashboard-confirmed-count');
-const dashboardAvailableCount = document.getElementById('dashboard-available-count');
+const dashboardMostBooked = document.getElementById('dashboard-most-booked');
+const dashboardCancelledCount = document.getElementById('dashboard-cancelled-count');
+const dashboardUpcomingCount = document.getElementById('dashboard-upcoming-count');
 
 const api = {
   resources: '/api/resources',
@@ -44,6 +47,12 @@ function getToday() {
   return `${year}-${month}-${day}`;
 }
 
+function applyDateRestrictions() {
+  const minDate = getToday();
+  bookingDateInput.min = minDate;
+  document.getElementById('date').min = minDate;
+}
+
 function getResourceName(resourceId) {
   const resource = state.resources.find((item) => Number(item.id) === Number(resourceId));
   return resource ? resource.name : 'Unknown Resource';
@@ -51,14 +60,28 @@ function getResourceName(resourceId) {
 
 function renderDashboard() {
   const confirmedBookings = state.bookings.filter((booking) => booking.status === 'confirmed');
+  const cancelledBookings = state.bookings.filter((booking) => booking.status === 'cancelled');
   const bookedResources = new Set(confirmedBookings.map((booking) => Number(booking.resourceId)));
+  const resourceUsage = {};
+
+  confirmedBookings.forEach((booking) => {
+    const resourceId = Number(booking.resourceId);
+    resourceUsage[resourceId] = (resourceUsage[resourceId] || 0) + 1;
+  });
+
+  const mostBookedEntry = Object.entries(resourceUsage).sort((a, b) => b[1] - a[1])[0];
+  const mostBookedResource = mostBookedEntry ? getResourceName(mostBookedEntry[0]) : 'None';
+  const today = getToday();
+  const upcomingCount = state.bookings.filter((booking) => booking.status === 'confirmed' && booking.date >= today).length;
   const date = new Date(`${state.selectedDate}T00:00:00`);
 
   dashboardDate.textContent = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
   dashboardResourceCount.textContent = state.resources.length;
   dashboardBookingCount.textContent = state.bookings.length;
   dashboardConfirmedCount.textContent = confirmedBookings.length;
-  dashboardAvailableCount.textContent = Math.max(state.resources.length - bookedResources.size, 0);
+  dashboardMostBooked.textContent = mostBookedResource;
+  dashboardCancelledCount.textContent = cancelledBookings.length;
+  dashboardUpcomingCount.textContent = upcomingCount;
 }
 
 async function fetchResources() {
@@ -146,7 +169,7 @@ function renderBookings() {
       }
 
       setMessage('success-message', 'Booking cancelled successfully.');
-      fetchBookings(state.selectedDate);
+      await fetchBookings(state.selectedDate);
     });
   });
 }
@@ -155,7 +178,9 @@ function openForm() {
   bookingFormPanel.classList.remove('hidden');
   state.formOpen = true;
   const dateField = document.getElementById('date');
-  if (!dateField.value) dateField.value = state.selectedDate || getToday();
+  const today = getToday();
+  dateField.min = today;
+  if (!dateField.value || dateField.value < today) dateField.value = state.selectedDate || today;
   bookingFormPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
@@ -207,9 +232,24 @@ bookingForm.addEventListener('submit', async (event) => {
   fetchBookings(state.selectedDate);
 });
 
+function showView(viewName) {
+  state.currentView = viewName;
+  document.querySelectorAll('.page-view').forEach((page) => {
+    page.classList.toggle('active', page.id === `${viewName}-page`);
+  });
+
+  document.querySelectorAll('.nav-btn').forEach((button) => {
+    button.classList.toggle('active', button.dataset.view === viewName);
+  });
+
+}
+
 document.getElementById('new-booking-btn').addEventListener('click', openForm);
 document.getElementById('close-form-btn').addEventListener('click', closeForm);
 document.getElementById('cancel-form-btn').addEventListener('click', closeForm);
+document.querySelectorAll('.nav-btn').forEach((button) => {
+  button.addEventListener('click', () => showView(button.dataset.view));
+});
 
 bookingDateInput.addEventListener('change', (event) => {
   state.selectedDate = event.target.value;
@@ -234,10 +274,12 @@ resourceList.addEventListener('click', (event) => {
 
 async function init() {
   state.selectedDate = getToday();
+  applyDateRestrictions();
   bookingDateInput.value = state.selectedDate;
   document.getElementById('date').value = state.selectedDate;
   await fetchResources();
   await fetchBookings(state.selectedDate);
+  showView(state.currentView);
 }
 
 init();

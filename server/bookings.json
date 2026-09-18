@@ -1,102 +1,122 @@
 [
   {
-    "id": 1789543313730,
-    "resourceId": 1,
-    "date": "2026-09-20",
-    "startTime": "09:00",
-    "endTime": "10:00",
-    "name": "Sathursika",
-    "purpose": "Team Meeting",
-    "status": "cancelled"
-  },
-  {
-    "id": 1789550308684,
-    "resourceId": 1,
-    "date": "2026-09-20",
-    "startTime": "09:00",
-    "endTime": "10:00",
-    "name": "sathursika",
-    "purpose": "team meeting",
-    "status": "cancelled"
-  },
-  {
-    "id": 1789550982756,
-    "resourceId": 1,
-    "date": "2026-09-20",
+    "id": 1789713169204,
+    "resourceId": 2,
+    "date": "2031-09-17",
     "startTime": "10:00",
     "endTime": "11:00",
-    "name": "Test user",
-    "purpose": "Boundary Test",
-    "status": "cancelled"
-  },
-  {
-    "id": 1789618796747,
-    "resourceId": 1,
-    "date": "2026-09-20",
-    "startTime": "09:00",
-    "endTime": "10:00",
-    "name": "sathursika",
-    "purpose": "team meeting",
-    "status": "cancelled"
-  },
-  {
-    "id": 1789619074252,
-    "resourceId": 1,
-    "date": "2026-09-20",
-    "startTime": "09:00",
-    "endTime": "10:00",
-    "name": "sathursika",
-    "purpose": "team meeting",
-    "status": "cancelled"
-  },
-  {
-    "id": 1789619563429,
-    "resourceId": 1,
-    "date": "2026-09-21",
-    "startTime": "10:00",
-    "endTime": "11:00",
-    "name": "shana",
-    "purpose": "presentation",
+    "name": "Alice",
+    "purpose": "Testing first slot",
     "status": "confirmed"
   },
   {
-    "id": 1789627577071,
-    "resourceId": 3,
-    "date": "2026-09-21",
+    "id": 1789713169214,
+    "resourceId": 2,
+    "date": "2031-09-17",
+    "startTime": "11:00",
+    "endTime": "12:00",
+    "name": "Bob",
+    "purpose": "Testing adjacent slot",
+    "status": "confirmed"
+  },
+  {
+    "id": 1789713630267,
+    "resourceId": 2,
+    "date": "2026-09-19",
     "startTime": "10:00",
     "endTime": "11:00",
     "name": "jachchu",
     "purpose": "presentation",
-    "status": "confirmed"
+    "status": "cancelled"
   },
   {
-    "id": 1789641463601,
-    "resourceId": 1,
-    "date": "2026-09-17",
-    "startTime": "09:00",
-    "endTime": "10:00",
-    "name": "jachchu",
-    "purpose": "presentation",
-    "status": "confirmed"
-  },
-  {
-    "id": 1789641544065,
-    "resourceId": 1,
-    "date": "2026-09-20",
+    "id": 1789714578378,
+    "resourceId": 2,
+    "date": "2033-05-29",
     "startTime": "10:00",
     "endTime": "11:00",
-    "name": "shana",
-    "purpose": "meeting",
+    "name": "Alice",
+    "purpose": "Testing first slot",
+    "status": "cancelled"
+  },
+  {
+    "id": 1789714578385,
+    "resourceId": 2,
+    "date": "2033-05-29",
+    "startTime": "11:00",
+    "endTime": "12:00",
+    "name": "Bob",
+    "purpose": "Testing adjacent slot",
+    "status": "cancelled"
+  },
+  {
+    "id": 1789714648621,
+    "resourceId": 2,
+    "date": "2026-09-19",
+    "startTime": "11:00",
+    "endTime": "12:00",
+    "name": "sathu",
+    "purpose": "team meeting",
     "status": "confirmed"
   },
   {
-    "id": 1789641638162,
-    "resourceId": 1,
-    "date": "2026-09-17",
-    "startTime": "10:30",
-    "endTime": "11:30",
-    "name": "kaja",
-    "purpose": "team meeting",
-    "status": "confirmed"
+    "id": 1789715587039,
+    "resourceId": 2,
+    "date": "2034-05-05",
+    "startTime": "10:00",
+    "endTime": "11:00",
+    "name": "Alice",
+    "purpose": "Testing first slot",
+    "status": "cancelled"
+  },
+  {
+    "id": 1789715587048,
+    "resourceId": 2,
+    "date": "2034-05-05",
+    "startTime": "11:00",
+    "endTime": "12:00",
+    "name": "Bob",
+    "purpose": "Testing adjacent slot",
+    "status": "cancelled"
+  },
+  {
+    "id": 1789722624157,
+    "resourceId": 2,
+    "date": "2039-03-29",
+    "startTime": "10:00",
+    "endTime": "11:00",
+    "name": "Alice",
+    "purpose": "Testing first slot",
+    "status": "cancelled"
+  },
+  {
+    "id": 1789722624165,
+    "resourceId": 2,
+    "date": "2039-03-29",
+    "startTime": "11:00",
+    "endTime": "12:00",
+    "name": "Bob",
+    "purpose": "Testing adjacent slot",
+    "status": "cancelled"
+  },
+  {
+    "id": 1789722646009,
+    "resourceId": 2,
+    "date": "2042-10-28",
+    "startTime": "10:00",
+    "endTime": "11:00",
+    "name": "Alice",
+    "purpose": "Testing first slot",
+    "status": "cancelled"
+  },
+  {
+    "id": 1789722646019,
+    "resourceId": 2,
+    "date": "2042-10-28",
+    "startTime": "11:00",
+    "endTime": "12:00",
+    "name": "Bob",
+    "purpose": "Testing adjacent slot",
+    "status": "cancelled"
   }
 ]

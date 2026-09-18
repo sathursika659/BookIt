@@ -8,12 +8,19 @@
   </head>
   <body>
     <div class="app-shell">
-        <header class="topbar">
+      <header class="topbar">
         <div>
           <h1>BookIt</h1>
           <p>Shared Resource Booking</p>
         </div>
-        <button class="primary-btn" id="new-booking-btn">+ New Booking</button>
+        <div class="topbar-actions">
+          <nav class="page-nav" aria-label="Main navigation">
+            <button type="button" class="nav-btn active" data-view="dashboard">Dashboard</button>
+            <button type="button" class="nav-btn" data-view="resources">Resources</button>
+            <button type="button" class="nav-btn" data-view="bookings">Bookings</button>
+          </nav>
+          <button class="primary-btn" id="new-booking-btn">+ New Booking</button>
+        </div>
       </header>
 
       <main class="container">
@@ -22,35 +29,68 @@
           <p>Book meeting rooms and equipment without double-booking.</p>
         </section>
 
-        <section class="dashboard-overview" aria-label="Booking dashboard">
-          <div class="dashboard-heading">
-            <div>
-              <span>Workspace dashboard</span>
-              <h3>Today at a glance</h3>
+        <div id="message-box"></div>
+
+        <section class="page-view active" id="dashboard-page">
+          <section class="dashboard-overview" aria-label="Booking dashboard">
+            <div class="dashboard-heading">
+              <div>
+                <span>Workspace dashboard</span>
+                <h3>Today at a glance</h3>
+              </div>
+              <span id="dashboard-date" class="dashboard-date"></span>
             </div>
-            <span id="dashboard-date" class="dashboard-date"></span>
-          </div>
-          <div class="dashboard-metrics">
-            <article class="dashboard-metric">
-              <span class="dashboard-metric-icon">◫</span>
-              <div><small>Resources</small><strong id="dashboard-resource-count">0</strong></div>
-            </article>
-            <article class="dashboard-metric">
-              <span class="dashboard-metric-icon blue">◷</span>
-              <div><small>Today’s bookings</small><strong id="dashboard-booking-count">0</strong></div>
-            </article>
-            <article class="dashboard-metric">
-              <span class="dashboard-metric-icon green">✓</span>
-              <div><small>Confirmed</small><strong id="dashboard-confirmed-count">0</strong></div>
-            </article>
-            <article class="dashboard-metric">
-              <span class="dashboard-metric-icon orange">⌁</span>
-              <div><small>Resources free</small><strong id="dashboard-available-count">0</strong></div>
-            </article>
+            <div class="dashboard-metrics">
+              <article class="dashboard-metric">
+                <span class="dashboard-metric-icon">◫</span>
+                <div><small>Resources</small><strong id="dashboard-resource-count">0</strong></div>
+              </article>
+              <article class="dashboard-metric">
+                <span class="dashboard-metric-icon blue">◷</span>
+                <div><small>Today’s bookings</small><strong id="dashboard-booking-count">0</strong></div>
+              </article>
+              <article class="dashboard-metric">
+                <span class="dashboard-metric-icon green">✓</span>
+                <div><small>Confirmed</small><strong id="dashboard-confirmed-count">0</strong></div>
+              </article>
+              <article class="dashboard-metric">
+                <span class="dashboard-metric-icon purple">★</span>
+                <div><small>Most booked</small><strong id="dashboard-most-booked">None</strong></div>
+              </article>
+              <article class="dashboard-metric">
+                <span class="dashboard-metric-icon red">✕</span>
+                <div><small>Cancelled</small><strong id="dashboard-cancelled-count">0</strong></div>
+              </article>
+              <article class="dashboard-metric">
+                <span class="dashboard-metric-icon teal">⏭</span>
+                <div><small>Upcoming</small><strong id="dashboard-upcoming-count">0</strong></div>
+              </article>
+            </div>
+          </section>
+        </section>
+
+        <section class="page-view" id="resources-page">
+          <div class="section panel-page">
+            <div class="section-header">
+              <h3>Available Resources</h3>
+              <p>Select a resource to open booking details.</p>
+            </div>
+            <div id="resource-list" class="resource-grid"></div>
           </div>
         </section>
 
-        <div id="message-box"></div>
+        <section class="page-view" id="bookings-page">
+          <div class="section panel-page booking-page">
+            <div class="section-header booking-header">
+              <div>
+                <h3>Bookings</h3>
+                <p>Check scheduled bookings for the selected date.</p>
+              </div>
+              <input type="date" id="booking-date" class="date-input" />
+            </div>
+            <div id="bookings-list" class="bookings-panel"></div>
+          </div>
+        </section>
 
         <section class="form-panel hidden" id="booking-form-panel">
           <div class="form-header">
@@ -101,26 +141,6 @@
               <button type="submit" class="primary-btn">Create Booking</button>
             </div>
           </form>
-        </section>
-
-        <section class="section">
-          <div class="section-header">
-            <h3>Available Resources</h3>
-            <p>Select a resource to view its bookings.</p>
-          </div>
-          <div id="resource-list" class="resource-grid"></div>
-        </section>
-
-        <section class="section">
-          <div class="section-header booking-header">
-            <div>
-              <h3>Bookings</h3>
-              <p>Check scheduled bookings for the selected date.</p>
-            </div>
-            <input type="date" id="booking-date" class="date-input" />
-          </div>
-
-          <div id="bookings-list" class="bookings-panel"></div>
         </section>
       </main>
     </div>

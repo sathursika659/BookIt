@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = 5000;
+const PORT = Number(process.env.PORT) || 5000;
 
 const publicDir = path.join(__dirname, 'public');
 const bookingsFile = path.join(__dirname, 'server', 'bookings.json');
@@ -74,14 +74,22 @@ app.post('/api/bookings', (req, res) => {
     return res.status(400).json({ message: 'End time must be later than start time.' });
   }
 
+  const bookingDate = new Date(`${date}T00:00:00`);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  if (Number.isNaN(bookingDate.getTime()) || bookingDate < today) {
+    return res.status(400).json({ message: 'Booking date cannot be before the current date.' });
+  }
+
   const bookings = getBookings();
 
   const overlappingBooking = bookings.find((booking) =>
     Number(booking.resourceId) === Number(resourceId) &&
     booking.date === date &&
     booking.status === 'confirmed' &&
-    startTime <= booking.endTime &&
-    endTime >= booking.startTime
+    startTime < booking.endTime &&
+    endTime > booking.startTime
   );
 
   if (overlappingBooking) {

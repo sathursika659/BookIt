@@ -1,41 +1,32 @@
 # BookIt
 
-BookIt is a small resource-booking app for shared workplace items such as meeting rooms, projectors, camera kits, and demo laptops. The app is intentionally simple, lightweight, and easy to run on a local machine.
+BookIt is a small resource-booking web app for shared workplace items such as meeting rooms, projectors, camera kits, and demo laptops. The goal is to replace messy group-chat coordination with a simple booking flow that prevents double-booking.
 
-It allows a user to:
+## What this app does
 
-- view the list of available resources
-- choose a date
-- create a booking with time, name, and purpose
-- prevent double booking on the same resource
-- cancel an existing booking
-- see the bookings for a selected day
+- lists the available bookable resources
+- allows a user to create a booking with resource, date, start time, end time, name, and purpose
+- blocks overlapping confirmed bookings on the same resource
+- shows bookings for the selected date
+- allows confirmed bookings to be cancelled
+- validates input and returns clear error messages
 
 ## Tech stack
 
-- Plain HTML, CSS, and JavaScript for the frontend
+- HTML, CSS, and JavaScript for the frontend
 - Node.js with Express for the backend API
 - JSON file storage for local persistence
 
-This is a practical choice for a small project because it keeps setup simple and still demonstrates the real booking logic clearly.
+This was chosen to keep the project simple, local, and easy to run without extra setup.
 
-## What works
+## Explicit edge-case decision
 
-- list of seeded resources
-- booking creation with validation
-- conflict detection for overlapping bookings on the same resource
-- daily booking view
-- booking cancellation
-- clear error messages for invalid requests
-
-## Explicit decision on edge cases
-
-I treat bookings that touch at the boundary as non-overlapping. In other words:
+Bookings that touch at the boundary are treated as non-overlapping.
 
 - 09:00–10:00 and 10:00–11:00 are allowed together
 - 09:00–10:00 and 09:30–10:30 are rejected as a clash
 
-This is documented in the decision log and is enforced in the overlap comparison.
+This is also documented in the decision log.
 
 ## How to run in under five minutes
 
@@ -47,7 +38,7 @@ npm install
 npm run dev
 ```
 
-3. Open this in the browser:
+3. Open this in a browser:
 
 ```text
 http://localhost:5000
@@ -55,19 +46,24 @@ http://localhost:5000
 
 ## Project structure
 
-- public/ — frontend files
-- server.js — backend API and static file server
+- public/ — frontend pages and scripts
+- server.js — Express backend and static file server
 - server/bookings.json — saved booking data
 
-## Notes
+## What works well
 
-This project chooses simplicity over complexity. It uses a JSON file instead of a database because the goal is a working resource-booking system that is easy to understand and easy to run.
+- seeded resource list
+- input validation
+- overlap detection on the same resource
+- daily bookings view
+- cancellation flow
+- clear error feedback
 
-## Stretch item chosen
+## Stretch item choice
 
-I did not add a stretch feature. The core booking flow is the priority, and I chose to finish the required feature set cleanly rather than add bonus functionality that could introduce risk.
+No stretch feature was added. I kept the scope focused on the core booking flow so the app stayed correct and easy to verify.
 
 ## Time spent
 
-This project took roughly 6–8 hours in total, including setup, testing, debugging, and documentation.
+This project took roughly 6–8 hours in total, including setup, debugging, testing, and writing the supporting notes.
 
